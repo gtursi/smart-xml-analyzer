@@ -24,6 +24,10 @@ public class CandidateElement {
 		this.score = calculateScore();
 	}
 
+	/**
+	 * FIXME: this implementation does not take into account the importance of each element, just the amount of them.
+	 * Maybe it should consider which element is more important, at least to decide when there is a tie.
+	 */
 	public int calculateScore() {
 		int score = 0;
 		for (Pair<String, String> att : this.originalAttributes.get()) {
@@ -43,4 +47,5 @@ public class CandidateElement {
 	public String toString(){
 		return element.toString();
 	}
+
 }

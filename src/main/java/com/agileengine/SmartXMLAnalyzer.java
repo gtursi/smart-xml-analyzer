@@ -33,6 +33,7 @@ public class SmartXMLAnalyzer {
 		this.cssSelector = cssSelector != null? cssSelector : DEFAULT_CSS_SELECTOR;
 	}
 
+	 // FIXME: return the element instead of log it
 	public void findBestMatch() {
 		Document originalFile = getDocument(originalFilePath);
 		Optional<List<Pair<String, String>>> originalAttributes = findAttributesById(originalFile, elementId);

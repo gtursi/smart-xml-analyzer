@@ -5,16 +5,27 @@ apply plugin: 'java'
 
 sourceCompatibility = 1.8
 
+
+//create a single Jar with all dependencies
+task fatJar(type: Jar) {
+    manifest {
+        attributes 'Implementation-Title': 'Smart XML Analyzer Fat Jar',
+                'Implementation-Version': version,
+                'Main-Class': 'com.agileengine.XmlAnalyzerApp'
+    }
+    baseName = project.name + '-all'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
+
 repositories {
     mavenCentral()
 }
 
 dependencies {
     compile 'org.jsoup:jsoup:1.11.2'
-
     compile 'org.slf4j:slf4j-log4j12:1.7.25'
 
     testCompile "junit:junit:4.11"
     testCompile "com.tngtech.java:junit-dataprovider:1.13.1"
-
 }
