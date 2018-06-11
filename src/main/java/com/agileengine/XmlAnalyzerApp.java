@@ -10,7 +10,7 @@ public class XmlAnalyzerApp {
 		String newFilePath = args[1];
 		String elementId = args[2];
 		// In the examples, a.btn is the only common attribute.
-		// We add the chance to pass the cssSelector to make the solution more generic.
+		// We add the possibility to pass the cssSelector to make the solution more generic.
 		String cssSelector = null;
 		if (args.length == 4) {
 			cssSelector = args[4];

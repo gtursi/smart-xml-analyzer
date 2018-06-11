@@ -16,12 +16,15 @@ public class CandidateElement {
 
 	private final Optional<List<Pair<String, String>>> originalAttributes;
 
+	private final int score;
+
 	public CandidateElement(Element element, Optional<List<Pair<String, String>>> originalAttributes) {
 		this.element = element;
 		this.originalAttributes = originalAttributes;
+		this.score = calculateScore();
 	}
 
-	public int getScore() {
+	public int calculateScore() {
 		int score = 0;
 		for (Pair<String, String> att : this.originalAttributes.get()) {
 			String value = Optional.ofNullable(element.attributes().get(att.getKey())).orElse("");
@@ -30,6 +33,10 @@ public class CandidateElement {
 			}
 		}
 		LOGGER.info("Score for element [" + element.toString() + "] is " + score);
+		return score;
+	}
+
+	public int getScore(){
 		return score;
 	}
 
